@@ -7,7 +7,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let row of data" (click)="rowClicked(row)">
-      <td *ngFor="let elem of row.public | values"> {{ elem }} </td>
+      <td *ngFor="let elem of row.public | values"> {{ elem | shorten: 25: '...'}} </td>
     </tr>
   </tbody>
 </table>
