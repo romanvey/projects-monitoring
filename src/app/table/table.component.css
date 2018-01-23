@@ -1,0 +1,33 @@
+table{
+    
+    background-color: white;
+    border: 1px solid #EBEBEB;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-collapse: separate; 
+}
+
+table th{
+    color: #BDBDBD;
+    height: 60px;
+    font-size: 14px;
+    padding-bottom: 17px;
+    text-align: center;
+}
+
+table td{
+    height: 60px;
+    font-size: 14px;
+    padding-top: 23px; 
+}
+
+
+table th:hover{
+    cursor: pointer;
+}
+
+table tr:hover{
+    cursor: pointer;
+    background-color: #EBEBEB;
+}

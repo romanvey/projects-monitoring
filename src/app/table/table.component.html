@@ -1,0 +1,13 @@
+<table class="table">
+  <thead>
+   
+    <tr>
+      <th *ngFor="let header of headers">{{ header }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of data" (click)="rowClicked(row)">
+      <td *ngFor="let elem of row.public | values"> {{ elem }} </td>
+    </tr>
+  </tbody>
+</table>
