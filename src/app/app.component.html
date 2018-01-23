@@ -1,0 +1,14 @@
+<header>
+	<h1>Projects monitoring</h1>
+</header>
+<div id="content">
+	<div id="tabs">
+		<div id="btn-list">
+				<button class="tab-btn" routerLink="/employee-list" routerLinkActive="active-link">Employee</button>
+				<button class="tab-btn" routerLink="/projects-list" routerLinkActive="active-link">Projects</button>
+		</div>
+	</div>
+	<div id="content-table">
+			<router-outlet></router-outlet>
+	</div>
+</div>
