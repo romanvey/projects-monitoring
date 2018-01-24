@@ -1,4 +1,4 @@
-import { AddEmployeeDialogComponent } from './../../dialogs/add-employee-dialog/add-employee-dialog.component';
+import { AddProjectDialogComponent } from './../../dialogs/add-project-dialog/add-project-dialog.component';
 import { Component, OnInit } from '@angular/core';
 import { DialogService } from 'ng2-bootstrap-modal';
 
@@ -48,27 +48,13 @@ export class ProjectsListComponent implements OnInit {
 		console.log(data);
 	}
 
-// Testing modal
-/*
-	showConfirm() {
-		const disposable = this.dialogService.addDialog(AddEmployeeDialogComponent, {
-			title: 'Confirm title',
-			data: 'Confirm message'
+	addProject() {
+		const disposable = this.dialogService.addDialog(AddProjectDialogComponent, {
+			title: 'Add project'
 		})
-			.subscribe((isConfirmed) => {
-				// We get dialog result
-				if (isConfirmed) {
-					console.log('accepted');
-				} else {
-					console.log('declined');
-				}
+			.subscribe((newProject) => {
+				console.log(newProject);
 			});
-		// We can close dialog calling disposable.unsubscribe();
-		// If dialog was not closed manually close it by timeout
-		setTimeout(() => {
-			disposable.unsubscribe();
-		}, 10000);
 	}
-*/
 }
 

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {NgPipesModule} from 'ngx-pipes';
-import { FormsModule } from '@angular/forms';
+import { NgPipesModule } from 'ngx-pipes';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
@@ -25,12 +25,14 @@ import { AddProjectDialogComponent } from './dialogs/add-project-dialog/add-proj
 	imports: [
 		BrowserModule,
 		FormsModule,
+		ReactiveFormsModule,
 		AppRoutingModule,
 		NgPipesModule,
 		BootstrapModalModule
 	],
 	providers: [],
-	entryComponents: [AddEmployeeDialogComponent],
+	entryComponents: [AddEmployeeDialogComponent,
+		AddProjectDialogComponent],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,54 +3,83 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" (click)="close()">&times;</button>
-				<h4 class="modal-title">{{title || 'Confirm'}}</h4>
+				<h4 class="modal-title">{{ title }}</h4>
 			</div>
 			<div class="modal-body">
-				<form>
+				<form [formGroup]="form">
 					<div class="form-group">
 						<label for="first-name" class="col-form-label">First name</label>
-						<input type="text" class="form-control" id="first-name" name="first-name"
-						placeholder="John" [(ngModel)]="employee.firstName" #firstName="ngModel" >
+						<input type="text" class="form-control" placeholder="John" id="first-name" formControlName="firstName">
+
+
+						<div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="warn">
+							<div *ngIf="firstName.errors.pattern">
+								Only English symbols required.
+							</div>
+							<div *ngIf="firstName.errors.minlength">
+								Name must be at least 2 characters long.
+							</div>
+							<div *ngIf="firstName.errors.required">
+								First name is required.
+							</div>
+						</div>
+
+
 					</div>
-					<div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
-					class="alert alert-danger">
-			   
-				 <div *ngIf="firstName.errors.required">
-				   Name is required.
-				 </div>
-				 <div *ngIf="firstName.errors.minlength">
-				   Name must be at least 4 characters long.
-				 </div>
-				 <div *ngIf="firstName.errors.forbiddenName">
-				   Name cannot be Bob.
-				 </div>
-			   
-			   </div>
+
 					<div class="form-group">
-							<label for="last-name" class="col-form-label">Last name</label>
-							<input type="text" class="form-control" id="last-name" name="last-name"
-							placeholder="Smith" [(ngModel)]="employee.lastName">
+						<label for="last-name" class="col-form-label">Last name</label>
+						<input type="text" class="form-control" id="last-name" placeholder="Smith" formControlName="lastName">
+
+
+						<div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="warn">
+							<div *ngIf="lastName.errors.pattern">
+								Only English symbols required.
+							</div>
+							<div *ngIf="lastName.errors.minlength">
+								Name must be at least 2 characters long.
+							</div>
+							<div *ngIf="lastName.errors.required">
+								Last name is required.
+							</div>
+						</div>
+
 					</div>
+
+
 					<div class="form-group">
-							<label for="position">Position</label>
-							<select class="form-control" id="position"
-							[(ngModel)]="employee.position" name="position">
+						<label for="position">Position</label>
+						<select class="form-control" id="position" formControlName="position">
 							  <option>Intern</option>
 							  <option>Junior</option>
 							  <option>Middle</option>
 							  <option>Senior</option>
 							</select>
-						  </div>
+
+						<div *ngIf="position.invalid && (position.dirty || position.touched)" class="warn">
+							<div *ngIf="position.errors.required">
+								Position is required.
+							</div>
+						</div>
+					</div>
 					<div class="form-group">
-							<label for="hire-time" class="col-form-label">Hire time</label>
-							<input type="text" class="form-control" id="hire-time" name="hire-time"
-							[(ngModel)]="employee.hireTime" placeholder="22/10/2015">
+						<label for="hire-time" class="col-form-label">Hire time</label>
+						<input type="text" class="form-control" id="hire-time" placeholder="22/10/2015" formControlName="hireTime">
+					
+						<div *ngIf="hireTime.invalid && (hireTime.dirty || hireTime.touched)" class="warn">
+							<div *ngIf="hireTime.errors.pattern">
+								Allowed following form '12/02/2017' only.
+							</div>
+							<div *ngIf="hireTime.errors.required">
+								Hire time is required.
+							</div>
+						</div>
 					</div>
 				</form>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="typical-btn cancel-btn" (click)="close()">Cancel</button>
-				<button type="button" class="typical-btn save-btn" (click)="confirm()">Save</button>
+				<button type="button" class="typical-btn save-btn" [disabled]="!form.valid" (click)="save(form.value)">Save</button>
 			</div>
 		</div>
 	</div>

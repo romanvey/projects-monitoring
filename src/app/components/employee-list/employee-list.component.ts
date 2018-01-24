@@ -43,22 +43,16 @@ export class EmployeeListComponent implements OnInit {
 	}
 
 	rowClicked(data) {
-		this.showConfirm(data);
+		console.log(data);
 	}
 
 	// Testing modal
-	showConfirm(data) {
+	addEmployee() {
 		const disposable = this.dialogService.addDialog(AddEmployeeDialogComponent, {
-			title: 'Confirm title'//,
-			//data: data
+			title: 'Add employee'
 		})
-			.subscribe((isConfirmed) => {
-				// We get dialog result
-				if (isConfirmed) {
-					console.log('accepted');
-				} else {
-					console.log('declined');
-				}
+			.subscribe((newEmployee) => {
+				console.log(newEmployee);
 			});
 	}
 

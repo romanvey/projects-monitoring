@@ -27,7 +27,6 @@ input:hover{
 
 
 
-
 select {
     background-color: #f7f7f7;
     color: rgba(0, 0, 0, 0.7);
@@ -72,6 +71,16 @@ option:hover {
     width: 80px;
     height: 40px;
     margin-right: -210px;
+}
+
+.save-btn:disabled{
+    background-color: #f0f0f0;
+    color:#c7c7c7;
+}
+
+.warn {
+    color: indianred;
+    margin-top: 5px;
 }
 
 .cancel-btn{
