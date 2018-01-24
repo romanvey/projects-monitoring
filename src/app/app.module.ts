@@ -12,6 +12,7 @@ import { TableComponent } from './table/table.component';
 import { ButtonComponent } from './button/button.component';
 import { AddEmployeeDialogComponent } from './add-employee-dialog/add-employee-dialog.component';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
+import { AddProjectDialogComponent } from './add-project-dialog/add-project-dialog.component';
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -20,6 +21,7 @@ import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 		TableComponent,
 		ButtonComponent,
 		AddEmployeeDialogComponent,
+		AddProjectDialogComponent,
 	],
 	imports: [
 		BrowserModule,
