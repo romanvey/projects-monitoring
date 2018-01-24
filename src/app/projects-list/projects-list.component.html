@@ -1,3 +1,4 @@
-<p>
-  projects-list works!
-</p>
+<header><h1>Projects</h1></header>
+<div class="table-content">
+	<app-table [data]="projects" [headers]="projectInfos" (rowClick)="rowClicked($event)"></app-table>
+</div>

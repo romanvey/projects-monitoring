@@ -6,7 +6,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let row of data" (click)="rowClicked(row)">
+    <tr *ngFor="let row of data" (click)="rowClicked(row)" class="colored">
       <td *ngFor="let elem of row.public | values"> {{ elem | shorten: 25: '...'}} </td>
     </tr>
   </tbody>

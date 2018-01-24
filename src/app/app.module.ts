@@ -19,7 +19,7 @@ import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 		EmployeeListComponent,
 		TableComponent,
 		ButtonComponent,
-		AddEmployeeDialogComponent
+		AddEmployeeDialogComponent,
 	],
 	imports: [
 		BrowserModule,

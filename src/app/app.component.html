@@ -1,11 +1,14 @@
 <div id="content">
-	<div id="tabs">
+	<div class="left-panel">
+	<header>
+		<div id="logo">APOLLO</div>
+	</header>
 		<div id="btn-list">
-				<button class="tab-btn" routerLink="/employee-list" routerLinkActive="active-link">Employee</button>
+				<button class="tab-btn" routerLink="/employee-list" routerLinkActive="active-link">Employees</button>
 				<button class="tab-btn" routerLink="/projects-list" routerLinkActive="active-link">Projects</button>
 		</div>
 	</div>
-	<div id="content-table">
+	<div class="right-panel">
 			<router-outlet></router-outlet>
 	</div>
 </div>

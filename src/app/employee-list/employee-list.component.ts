@@ -8,17 +8,17 @@ import { DialogService } from 'ng2-bootstrap-modal';
 	styleUrls: ['./employee-list.component.css']
 })
 export class EmployeeListComponent implements OnInit {
-	employee;
-	employeeInfo;
+	employees;
+	employeeInfos;
 
 	constructor(public dialogService: DialogService) { }
 
 	ngOnInit() {
-		this.employee = this.getEmployee();
-		this.employeeInfo = ['Employee', 'Active project', 'Position', 'Hire date'];
+		this.employees = this.getEmployees();
+		this.employeeInfos = ['Employee', 'Active project', 'Position', 'Hire date'];
 	}
 
-	getEmployee() {
+	getEmployees() {
 		const result = [
 			{
 				public: {
@@ -47,6 +47,7 @@ export class EmployeeListComponent implements OnInit {
 		this.showConfirm();
 	}
 
+// Testing modal
 	showConfirm() {
 		const disposable = this.dialogService.addDialog(AddEmployeeDialogComponent, {
 			title: 'Confirm title',
@@ -55,9 +56,9 @@ export class EmployeeListComponent implements OnInit {
 			.subscribe((isConfirmed) => {
 				// We get dialog result
 				if (isConfirmed) {
-					alert('accepted');
+					console.log('accepted');
 				} else {
-					alert('declined');
+					console.log('declined');
 				}
 			});
 		// We can close dialog calling disposable.unsubscribe();
