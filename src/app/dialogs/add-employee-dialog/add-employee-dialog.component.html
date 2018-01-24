@@ -63,15 +63,15 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="hire-time" class="col-form-label">Hire time</label>
-						<input type="text" class="form-control" id="hire-time" placeholder="22/10/2015" formControlName="hireTime">
+						<label for="hire-date" class="col-fteorm-label">Hire date</label>
+						<input type="text" class="form-control" id="hire-date" placeholder="22/10/2015" formControlName="hireDate">
 					
-						<div *ngIf="hireTime.invalid && (hireTime.dirty || hireTime.touched)" class="warn">
-							<div *ngIf="hireTime.errors.pattern">
+						<div *ngIf="hireDate.invalid && (hireDate.dirty || hireDate.touched)" class="warn">
+							<div *ngIf="hireDate.errors.pattern">
 								Allowed following form '12/02/2017' only.
 							</div>
-							<div *ngIf="hireTime.errors.required">
-								Hire time is required.
+							<div *ngIf="hireDate.errors.required">
+								Hire date is required.
 							</div>
 						</div>
 					</div>

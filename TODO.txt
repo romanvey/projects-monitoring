@@ -1,0 +1,11 @@
+Add dialogs with info about table elements (1)
+Dropdown options style (minor)
+Lazy loading (Pagination or scrolling?) (3)
+Toasters (5)
+Services:
+- HttpService in Shared (4)
+Redirecting with POST and (button, table)-transformation* (easy/hard?) (2)
+
+
+API:
+add-employee, add-project must return id

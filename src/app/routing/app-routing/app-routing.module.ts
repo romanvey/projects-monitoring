@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './../../app.component';
-import { EmployeeListComponent } from './../../components/employee-list/employee-list.component';
+import { EmployeesListComponent } from './../../components/employees-list/employees-list.component';
 import { ProjectsListComponent } from './../../components/projects-list/projects-list.component';
 
 
@@ -13,7 +13,7 @@ const routes: Routes = [
 	},
 	{
 		path: 'employees-list',
-		component: EmployeeListComponent,
+		component: EmployeesListComponent,
 	},
 	{
 		path: 'projects-list',

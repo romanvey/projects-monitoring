@@ -1,21 +1,25 @@
+import { EmployeesListService } from './../../services/employees-list/employees-list.service';
+import { ApiRequestsService } from './../../shared/api-requests.service';
 import { AddEmployeeDialogComponent } from './../../dialogs/add-employee-dialog/add-employee-dialog.component';
 import { Component, OnInit } from '@angular/core';
 import { DialogService } from 'ng2-bootstrap-modal';
 
 @Component({
-	selector: 'app-employee-list',
-	templateUrl: './employee-list.component.html',
-	styleUrls: ['./employee-list.component.css']
+	selector: 'app-employees-list',
+	templateUrl: './employees-list.component.html',
+	styleUrls: ['./employees-list.component.css']
 })
-export class EmployeeListComponent implements OnInit {
-	employees;
-	employeeInfos;
+export class EmployeesListComponent implements OnInit {
+	employees: object[];
+	employeeTableHeaders;
+	result;
 
-	constructor(public dialogService: DialogService) { }
+	constructor(private dialogService: DialogService,
+	private employeesListService: EmployeesListService) { }
 
 	ngOnInit() {
 		this.employees = this.getEmployees();
-		this.employeeInfos = ['Employee', 'Active project', 'Position', 'Hire date'];
+		this.employeeTableHeaders = ['Employee', 'Active project', 'Position', 'Hire date'];
 	}
 
 	getEmployees() {
@@ -52,7 +56,14 @@ export class EmployeeListComponent implements OnInit {
 			title: 'Add employee'
 		})
 			.subscribe((newEmployee) => {
-				console.log(newEmployee);
+				if (newEmployee) {
+					console.log(newEmployee);
+					const data = this.employeesListService.addEmployee(newEmployee);
+					if (data) {
+						this.employees.push(this.employeesListService.tableForm(data));
+					}
+				}
+				console.log(this.employees);
 			});
 	}
 

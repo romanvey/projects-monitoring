@@ -20,7 +20,7 @@ export class AddEmployeeDialogComponent extends DialogComponent<IAddEmployeeDial
 	firstName: FormControl;
 	lastName: FormControl;
 	position: FormControl;
-	hireTime: FormControl;
+	hireDate: FormControl;
 
 	constructor(dialogService: DialogService) {
 		super(dialogService);
@@ -36,7 +36,7 @@ export class AddEmployeeDialogComponent extends DialogComponent<IAddEmployeeDial
 			Validators.required])
 			);
 		this.position = new FormControl('', Validators.required);
-		this.hireTime = new FormControl('', Validators.compose([
+		this.hireDate = new FormControl('', Validators.compose([
 			Validators.pattern('[\\d]{2}\\/[\\d]{2}\\/[\\d]{4}'),
 			Validators.required])
 			);
@@ -45,7 +45,7 @@ export class AddEmployeeDialogComponent extends DialogComponent<IAddEmployeeDial
 			firstName: this.firstName,
 			lastName: this.lastName,
 			position: this.position,
-			hireTime: this.hireTime
+			hireDate: this.hireDate
 		});
 	}
 	save(data) {
