@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './../app.component';
-import { EmployeeListComponent } from './../employee-list/employee-list.component'
-import { ProjectsListComponent } from './../projects-list/projects-list.component'
+import { AppComponent } from './../../app.component';
+import { EmployeeListComponent } from './../../components/employee-list/employee-list.component';
+import { ProjectsListComponent } from './../../components/projects-list/projects-list.component';
 
 
 const routes: Routes = [
 	{
 		path: '',
-		redirectTo: '/employee-list',
+		redirectTo: '/employees-list',
 		pathMatch: 'full'
 	},
 	{
-		path: 'employee-list',
+		path: 'employees-list',
 		component: EmployeeListComponent,
 	},
 	{

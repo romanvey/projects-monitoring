@@ -1,4 +1,9 @@
-<header><h1>Employees</h1></header>
+<header>
+	<div class="header">
+			<h1>Employees</h1>
+			<button class="typical-btn add-btn">Add employee</button>
+	</div>
+</header>
 <div class="table-content">
 	<app-table [data]="employees" [headers]="employeeInfos" (rowClick)="rowClicked($event)"></app-table>
 </div>

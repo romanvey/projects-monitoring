@@ -3,9 +3,8 @@ import { DialogComponent, DialogService } from 'ng2-bootstrap-modal';
 
 
 
-export interface ConfirmModel {
+export interface IAddEmployeeDialog {
 	title: string;
-	message: string;
 }
 
 @Component({
@@ -15,16 +14,22 @@ export interface ConfirmModel {
 })
 
 
-export class AddEmployeeDialogComponent extends DialogComponent<ConfirmModel, boolean> implements ConfirmModel {
+export class AddEmployeeDialogComponent extends DialogComponent<IAddEmployeeDialog, boolean> implements IAddEmployeeDialog {
 	title: string;
-	message: string;
+	employee = {
+		firstName: '',
+		lastName: '',
+		position: '',
+		hireTime: ''
+	}
+
 	constructor(dialogService: DialogService) {
 		super(dialogService);
+		
 	}
 	confirm() {
-		// we set dialog result as true on click on confirm button,
-		// then we can get dialog result from caller code
 		this.result = true;
+		console.log(this.employee);
 		this.close();
 	}
 }

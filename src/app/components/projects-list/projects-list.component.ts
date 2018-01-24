@@ -1,4 +1,4 @@
-import { AddEmployeeDialogComponent } from './../add-employee-dialog/add-employee-dialog.component';
+import { AddEmployeeDialogComponent } from './../../dialogs/add-employee-dialog/add-employee-dialog.component';
 import { Component, OnInit } from '@angular/core';
 import { DialogService } from 'ng2-bootstrap-modal';
 
@@ -15,7 +15,7 @@ export class ProjectsListComponent implements OnInit {
 
 	ngOnInit() {
 		this.projects = this.getProjects();
-		this.projectInfos = ['Project', 'Status', 'Team number', 'Star date'];
+		this.projectInfos = ['Project', 'Status', 'Team number', 'Start date', 'End date'];
 	}
 
 	getProjects() {
@@ -25,7 +25,8 @@ export class ProjectsListComponent implements OnInit {
 					project: 'Cycle',
 					status: 'Active',
 					teamNumber: 4,
-					startDate: '23/01/2018'
+					startDate: '23/01/2018',
+					endDate: '24/01/2018'
 				},
 				private: { id: 1 }
 			},
@@ -34,7 +35,8 @@ export class ProjectsListComponent implements OnInit {
 					project: 'Cycle 2.0',
 					status: 'Active',
 					teamNumber: 4,
-					startDate: '23/01/2018'
+					startDate: '23/01/2018',
+					endDate: '24/01/2018'
 				},
 				private: { id: 2 }
 			}];
@@ -44,14 +46,14 @@ export class ProjectsListComponent implements OnInit {
 
 	rowClicked(data) {
 		console.log(data);
-		this.showConfirm();
 	}
 
 // Testing modal
+/*
 	showConfirm() {
 		const disposable = this.dialogService.addDialog(AddEmployeeDialogComponent, {
 			title: 'Confirm title',
-			message: 'Confirm message'
+			data: 'Confirm message'
 		})
 			.subscribe((isConfirmed) => {
 				// We get dialog result
@@ -67,5 +69,6 @@ export class ProjectsListComponent implements OnInit {
 			disposable.unsubscribe();
 		}, 10000);
 	}
-
+*/
 }
+
