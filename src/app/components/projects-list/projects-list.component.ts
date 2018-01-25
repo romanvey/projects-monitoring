@@ -16,33 +16,27 @@ export class ProjectsListComponent implements OnInit {
 	private projectsListService: ProjectsListService) { }
 
 	ngOnInit() {
-		this.projects = this.getProjects();
+		this.projects = this.projectsListService.arrayToTableForm(this.getProjects());
 		this.projectTableHeaders = ['Project', 'Status', 'Team number', 'Start date', 'End date'];
 	}
 
 	getProjects() {
 		const result = [
 			{
-				public: {
-					project: 'Cycle',
-					status: 'Active',
-					teamNumber: 1,
-					startDate: '23/01/2018',
-					endDate: '24/01/2018'
-				},
-				private: { id: 1,
-				members: [2] }
+				project: 'Cycle',
+				status: 'Active',
+				startDate: '23/01/2018',
+				endDate: '24/01/2018',
+				id: 1,
+				members: [2]
 			},
 			{
-				public: {
-					project: 'Cycle 2.0',
-					status: 'Active',
-					teamNumber: 2,
-					startDate: '23/01/2018',
-					endDate: '24/01/2018'
-				},
-				private: { id: 2,
-				members: [1, 3]}
+				project: 'Cycle 2.0',
+				status: 'Active',
+				startDate: '23/01/2018',
+				endDate: '24/01/2018',
+				id: 2,
+				members: [1, 3]
 			}];
 
 		return result;
@@ -59,9 +53,9 @@ export class ProjectsListComponent implements OnInit {
 			.subscribe((newProject) => {
 				if (newProject) {
 					console.log(newProject);
-					const data = this.projectsListService.addProject(newProject);
-					if (data) {
-						this.projects.push(this.projectsListService.toTableForm(data));
+					
+					if (newProject) {
+						this.projects.push(this.projectsListService.toTableForm(newProject));
 					}
 				}
 				console.log(this.projects);

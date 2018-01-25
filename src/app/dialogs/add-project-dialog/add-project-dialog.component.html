@@ -14,7 +14,7 @@
 
 						<div *ngIf="project.invalid && (project.dirty || project.touched)" class="warn">
 							<div *ngIf="project.errors.pattern">
-								Only English symbols required.
+								Only English symbols, numbers, ., - and space allowed.
 							</div>
 							<div *ngIf="project.errors.minlength">
 								Name must be at least 3 characters long.
@@ -76,6 +76,10 @@
 			<div class="modal-footer">
 				<button type="button" class="typical-btn cancel-btn" (click)="close()">Cancel</button>
 				<button type="button" class="typical-btn save-btn" [disabled]="!form.valid" (click)="save(form.value)">Save</button>
+			</div>
+
+			<div *ngIf="cannotCreateProject" class="not-exists">
+				Cannot create project.
 			</div>
 		</div>
 	</div>

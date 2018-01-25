@@ -14,7 +14,7 @@
 
 						<div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="warn">
 							<div *ngIf="firstName.errors.pattern">
-								Only English symbols required.
+								Only English symbols allowed.
 							</div>
 							<div *ngIf="firstName.errors.minlength">
 								Name must be at least 2 characters long.
@@ -27,6 +27,7 @@
 
 					</div>
 
+
 					<div class="form-group">
 						<label for="last-name" class="col-form-label">Last name</label>
 						<input type="text" class="form-control" id="last-name" placeholder="Smith" formControlName="lastName">
@@ -34,7 +35,7 @@
 
 						<div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="warn">
 							<div *ngIf="lastName.errors.pattern">
-								Only English symbols required.
+								Only English symbols allowed.
 							</div>
 							<div *ngIf="lastName.errors.minlength">
 								Name must be at least 2 characters long.
@@ -43,6 +44,24 @@
 								Last name is required.
 							</div>
 						</div>
+
+					</div>
+
+
+					<div class="form-group">
+						<label for="email" class="col-form-label">Email</label>
+						<input type="text" class="form-control" placeholder="ex@gmail.com" id="email" formControlName="email">
+
+
+						<div *ngIf="email.invalid && (email.dirty || email.touched)" class="warn">
+							<div *ngIf="email.errors.pattern">
+								Invalid email.
+							</div>
+							<div *ngIf="email.errors.required">
+								Email is required.
+							</div>
+						</div>
+
 
 					</div>
 
@@ -62,6 +81,10 @@
 							</div>
 						</div>
 					</div>
+
+					
+
+
 					<div class="form-group">
 						<label for="hire-date" class="col-fteorm-label">Hire date</label>
 						<input type="text" class="form-control" id="hire-date" placeholder="22/10/2015" formControlName="hireDate">
@@ -80,6 +103,10 @@
 			<div class="modal-footer">
 				<button type="button" class="typical-btn cancel-btn" (click)="close()">Cancel</button>
 				<button type="button" class="typical-btn save-btn" [disabled]="!form.valid" (click)="save(form.value)">Save</button>
+			</div>
+
+			<div *ngIf="cannotCreateEmployee" class="not-exists">
+				Cannot create employee.
 			</div>
 		</div>
 	</div>

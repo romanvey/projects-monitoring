@@ -1,6 +1,7 @@
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DialogComponent, DialogService } from 'ng2-bootstrap-modal';
 import { Component, OnInit } from '@angular/core';
+import { ApiRequestsService } from '../../shared/api-requests/api-requests.service';
 
 export interface IAddProjectDialog {
 	title: string;
@@ -19,21 +20,26 @@ export class AddProjectDialogComponent extends DialogComponent<IAddProjectDialog
 	startDate: FormControl;
 	endDate: FormControl;
 
-	constructor(dialogService: DialogService) {
+	cannotCreateProject: boolean;
+
+	constructor(dialogService: DialogService,
+	private apiRequestsService: ApiRequestsService) {
 		super(dialogService);
 
+		this.cannotCreateProject = false;
+
 		this.project = new FormControl('', Validators.compose([
-			Validators.pattern('[a-zA-Z]+'),
+			Validators.pattern('[a-zA-Z\\. 0-9-]+'),
 			Validators.minLength(3),
 			Validators.required])
 			);
 		this.status = new FormControl('', Validators.required);
 		this.startDate = new FormControl('', Validators.compose([
-			Validators.pattern('[\\d]{2}\\/[\\d]{2}\\/[\\d]{4}'),
+			Validators.pattern(String.raw`(^(((0[1-9]|1[0-9]|2[0-8])[\/](0[1-9]|1[012]))|((29|30|31)[\/](0[13578]|1[02]))|((29|30)[\/](0[4,6,9]|11)))[\/](19|[2-9][0-9])\d\d$)|(^29[\/]02[\/](19|[2-9][0-9])(00|04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96)$)`),
 			Validators.required])
 			);
 		this.endDate = new FormControl('', Validators.compose([
-			Validators.pattern('[\\d]{2}\\/[\\d]{2}\\/[\\d]{4}'),
+			Validators.pattern(String.raw`(^(((0[1-9]|1[0-9]|2[0-8])[\/](0[1-9]|1[012]))|((29|30|31)[\/](0[13578]|1[02]))|((29|30)[\/](0[4,6,9]|11)))[\/](19|[2-9][0-9])\d\d$)|(^29[\/]02[\/](19|[2-9][0-9])(00|04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96)$)`),
 			Validators.required])
 			);
 
@@ -44,9 +50,15 @@ export class AddProjectDialogComponent extends DialogComponent<IAddProjectDialog
 			endDate: this.endDate
 		});
 	}
-	save(data) {
+	save(newProject) {
 		console.log('Add project');
-		this.result = data;
-		this.close();
+		const response = this.apiRequestsService.addProject(newProject);
+		if (response) {
+			this.cannotCreateProject = false;
+			this.result = response;
+			this.close();
+		} else {
+			this.cannotCreateProject = true;
+		}
 	}
 }

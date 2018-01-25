@@ -1,4 +1,4 @@
-import { ApiRequestsService } from './../../shared/api-requests.service';
+import { ApiRequestsService } from './../../shared/api-requests/api-requests.service';
 import { Injectable } from '@angular/core';
 
 @Injectable()
@@ -6,14 +6,11 @@ export class EmployeesListService {
 
 	constructor(private apiRequestsService: ApiRequestsService) { }
 
-	addEmployee(employee) {
-		return this.apiRequestsService.addEmployee(employee);
-	}
-
 	toTableForm(employee) {
 		return {
 			public: {
 				name: employee.firstName + ' ' + employee.lastName,
+				email: employee.email,
 				project: employee.project,
 				position: employee.position,
 				hireDate: employee.hireDate

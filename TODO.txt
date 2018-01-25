@@ -11,11 +11,40 @@ API:
 add-employee, add-project must return id
 
 
+
+
+between add form and response form differense only that add form dosen`t have id and project
+
+EMPLOYEE:
+
+response form:
+{
+    firstName: 'Roman',
+    lastName: 'Vey',
+    project: 'No projects',
+    position: 'Junior',
+    hireDate: '23/01/2018',
+    id: 1
+}
+
 table form:
 have public, private
 used always
 get response transformed into table form
 after adding we also had get response ^
 
-between add form and response form differense only that add form dosen`t have id and project
+{
+    private:{
+        id: 1
+    }
+    public: {
+    hireDate:"23/01/2018"
+    name:"Roman Vey"
+    position:"Junior"
+    project:"No projects"
+    }
+}
+
+PROJECT:
+
 

@@ -1,5 +1,5 @@
 import { EmployeesListService } from './../../services/employees-list/employees-list.service';
-import { ApiRequestsService } from './../../shared/api-requests.service';
+import { ApiRequestsService } from './../../shared/api-requests/api-requests.service';
 import { AddEmployeeDialogComponent } from './../../dialogs/add-employee-dialog/add-employee-dialog.component';
 import { Component, OnInit } from '@angular/core';
 import { DialogService } from 'ng2-bootstrap-modal';
@@ -14,11 +14,12 @@ export class EmployeesListComponent implements OnInit {
 	employeeTableHeaders: string[];
 
 	constructor(private dialogService: DialogService,
-	private employeesListService: EmployeesListService) { }
+	private employeesListService: EmployeesListService,
+	private apiRequestsService: ApiRequestsService) { }
 
 	ngOnInit() {
 		this.employees = this.employeesListService.arrayToTableForm(this.getEmployees());
-		this.employeeTableHeaders = ['Employee', 'Active project', 'Position', 'Hire date'];
+		this.employeeTableHeaders = ['Employee', 'Email', 'Active project', 'Position', 'Hire date'];
 	}
 
 	getEmployees() {
@@ -26,6 +27,7 @@ export class EmployeesListComponent implements OnInit {
 			{
 				firstName: 'Roman',
 				lastName: 'Vey',
+				email: 'roman.vey@gmail.com',
 				project: 'No projects',
 				position: 'Junior',
 				hireDate: '23/01/2018',
@@ -34,6 +36,7 @@ export class EmployeesListComponent implements OnInit {
 			{
 				firstName: 'Somebody',
 				lastName: 'Test',
+				email: 'somebody@gmail.com',
 				project: 'No projects',
 				position: 'Middle',
 				hireDate: '23/01/2017',
@@ -47,18 +50,14 @@ export class EmployeesListComponent implements OnInit {
 		console.log(data);
 	}
 
-	// Testing modal
+	
 	addEmployee() {
 		const disposable = this.dialogService.addDialog(AddEmployeeDialogComponent, {
 			title: 'Add employee'
 		})
 			.subscribe((newEmployee) => {
 				if (newEmployee) {
-					console.log(newEmployee);
-					const data = this.employeesListService.addEmployee(newEmployee);
-					if (data) {
-						this.employees.push(this.employeesListService.toTableForm(data));
-					}
+						this.employees.push(this.employeesListService.toTableForm(newEmployee));
 				}
 				console.log(this.employees);
 			});

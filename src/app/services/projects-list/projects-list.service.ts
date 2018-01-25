@@ -1,4 +1,4 @@
-import { ApiRequestsService } from './../../shared/api-requests.service';
+import { ApiRequestsService } from './../../shared/api-requests/api-requests.service';
 import { Injectable } from '@angular/core';
 
 @Injectable()
@@ -15,14 +15,22 @@ export class ProjectsListService {
 				public: {
 					project: project.project,
 					status: project.status,
-					teamNumber: 0,
+					teamNumber: project.members.length,
 					startDate: project.startDate,
 					endDate: project.endDate
 				},
 				private: {
-					id: 6,
-					members: []
+					id: project.id,
+					members: project.members
 				}
 			};
 	}
+
+	arrayToTableForm(projects: object[]) {
+		const newForm = [];
+		for (let i = 0; i < projects.length; i++) {
+			newForm.push(this.toTableForm(projects[i]));
+		}
+		return newForm;
+	}	
 }

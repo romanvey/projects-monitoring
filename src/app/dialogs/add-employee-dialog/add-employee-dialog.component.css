@@ -82,6 +82,12 @@ option:hover {
     color: indianred;
     margin-top: 5px;
 }
+.not-exists {
+    color: indianred;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-top: -5px;
+}
 
 .cancel-btn{
     background-color: rgba(255,255,255, 0);
