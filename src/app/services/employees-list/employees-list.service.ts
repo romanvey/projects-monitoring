@@ -10,11 +10,11 @@ export class EmployeesListService {
 		return this.apiRequestsService.addEmployee(employee);
 	}
 
-	tableForm(employee) {
+	toTableForm(employee) {
 		return {
 			public: {
 				name: employee.firstName + ' ' + employee.lastName,
-				project: 'No projects',
+				project: employee.project,
 				position: employee.position,
 				hireDate: employee.hireDate
 			},
@@ -22,5 +22,12 @@ export class EmployeesListService {
 				id: employee.id
 			}
 		};
+	}
+	arrayToTableForm(employees: object[]) {
+		const newForm = [];
+		for (let i = 0; i < employees.length; i++) {
+			newForm.push(this.toTableForm(employees[i]));
+		}
+		return newForm;
 	}
 }

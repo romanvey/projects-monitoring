@@ -9,3 +9,13 @@ Redirecting with POST and (button, table)-transformation* (easy/hard?) (2)
 
 API:
 add-employee, add-project must return id
+
+
+table form:
+have public, private
+used always
+get response transformed into table form
+after adding we also had get response ^
+
+between add form and response form differense only that add form dosen`t have id and project
+

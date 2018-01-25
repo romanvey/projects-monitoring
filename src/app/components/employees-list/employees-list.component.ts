@@ -11,36 +11,33 @@ import { DialogService } from 'ng2-bootstrap-modal';
 })
 export class EmployeesListComponent implements OnInit {
 	employees: object[];
-	employeeTableHeaders;
-	result;
+	employeeTableHeaders: string[];
 
 	constructor(private dialogService: DialogService,
 	private employeesListService: EmployeesListService) { }
 
 	ngOnInit() {
-		this.employees = this.getEmployees();
+		this.employees = this.employeesListService.arrayToTableForm(this.getEmployees());
 		this.employeeTableHeaders = ['Employee', 'Active project', 'Position', 'Hire date'];
 	}
 
 	getEmployees() {
 		const result = [
 			{
-				public: {
-					name: 'Roman Vey',
-					project: 'No projects',
-					position: 'Junior',
-					hireDate: '23/01/2018'
-				},
-				private: { id: 1 }
+				firstName: 'Roman',
+				lastName: 'Vey',
+				project: 'No projects',
+				position: 'Junior',
+				hireDate: '23/01/2018',
+				id: 1
 			},
 			{
-				public: {
-					name: 'Somebody Test',
-					project: 'No projects',
-					position: 'Middle',
-					hireDate: '23/01/2017'
-				},
-				private: { id: 2 }
+				firstName: 'Somebody',
+				lastName: 'Test',
+				project: 'No projects',
+				position: 'Middle',
+				hireDate: '23/01/2017',
+				id: 4
 			}];
 
 		return result;
@@ -60,7 +57,7 @@ export class EmployeesListComponent implements OnInit {
 					console.log(newEmployee);
 					const data = this.employeesListService.addEmployee(newEmployee);
 					if (data) {
-						this.employees.push(this.employeesListService.tableForm(data));
+						this.employees.push(this.employeesListService.toTableForm(data));
 					}
 				}
 				console.log(this.employees);
