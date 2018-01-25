@@ -3,6 +3,7 @@ import { ApiRequestsService } from './../../shared/api-requests/api-requests.ser
 import { AddEmployeeDialogComponent } from './../../dialogs/add-employee-dialog/add-employee-dialog.component';
 import { Component, OnInit } from '@angular/core';
 import { DialogService } from 'ng2-bootstrap-modal';
+import { EmployeeItemDialogComponent } from '../../dialogs/employee-item-dialog/employee-item-dialog.component';
 
 @Component({
 	selector: 'app-employees-list',
@@ -48,6 +49,12 @@ export class EmployeesListComponent implements OnInit {
 
 	rowClicked(data) {
 		console.log(data);
+		const disposable = this.dialogService.addDialog(EmployeeItemDialogComponent, {
+			title: 'Employee info'
+		})
+			.subscribe((result) => {
+				console.log('result here');
+		});
 	}
 
 	

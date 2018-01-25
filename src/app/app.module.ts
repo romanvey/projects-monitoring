@@ -17,6 +17,8 @@ import { AddProjectDialogComponent } from './dialogs/add-project-dialog/add-proj
 import { ApiRequestsService } from './shared/api-requests/api-requests.service';
 import { EmployeesListService } from './services/employees-list/employees-list.service';
 import { ProjectsListService } from './services/projects-list/projects-list.service';
+import { EmployeeItemDialogComponent } from './dialogs/employee-item-dialog/employee-item-dialog.component';
+import { ProjectItemDialogComponent } from './dialogs/project-item-dialog/project-item-dialog.component';
 
 
 @NgModule({
@@ -27,6 +29,8 @@ import { ProjectsListService } from './services/projects-list/projects-list.serv
 		TableComponent,
 		AddEmployeeDialogComponent,
 		AddProjectDialogComponent,
+		EmployeeItemDialogComponent,
+		ProjectItemDialogComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -38,7 +42,9 @@ import { ProjectsListService } from './services/projects-list/projects-list.serv
 	],
 	providers: [ApiRequestsService, EmployeesListService, ProjectsListService],
 	entryComponents: [AddEmployeeDialogComponent,
-		AddProjectDialogComponent],
+		AddProjectDialogComponent,
+		EmployeeItemDialogComponent,
+		ProjectItemDialogComponent],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

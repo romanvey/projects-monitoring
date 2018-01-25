@@ -11,7 +11,8 @@ export class ApiRequestsService {
 		// SIMULATING SENDING
 		// from response
 		employee.id = 3;
-		return employee;
+		return null;
+		//return employee;
 	}
 
 	addProject(project) {
