@@ -19,22 +19,45 @@ export class EmployeesListComponent implements OnInit {
 	private apiRequestsService: ApiRequestsService) { }
 
 	ngOnInit() {
-		this.employees = this.employeesListService.arrayToTableForm(this.apiRequestsService.getEmployees());
+		this.employees = this.employeesListService.arrayToTableForm(this.getEmployees());
 		this.employeeTableHeaders = ['Employee', 'Email', 'Active project', 'Position', 'Hire date'];
 	}
 
+	getEmployees() {
+		const result = [
+			{
+				firstName: 'Roman',
+				lastName: 'Vey',
+				email: 'roman.vey@gmail.com',
+				project: 'No projects',
+				position: 'Junior',
+				hireDate: '23/01/2018',
+				id: 1
+			},
+			{
+				firstName: 'Somebody',
+				lastName: 'Test',
+				email: 'somebody@gmail.com',
+				project: 'No projects',
+				position: 'Middle',
+				hireDate: '23/01/2017',
+				id: 4
+			}];
 
-	rowClicked(employee) {
-		console.log('rowClicked:', employee);
+		return result;
+	}
+
+	rowClicked(data) {
+		console.log(data);
 		const disposable = this.dialogService.addDialog(EmployeeItemDialogComponent, {
-			employee: employee
+			title: 'Employee info'
 		})
 			.subscribe((result) => {
 				console.log('result here');
 		});
 	}
 
-
+	
 	addEmployee() {
 		const disposable = this.dialogService.addDialog(AddEmployeeDialogComponent, {
 			title: 'Add employee'
