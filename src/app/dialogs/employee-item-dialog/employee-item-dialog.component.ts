@@ -4,28 +4,33 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ApiRequestsService } from '../../shared/api-requests/api-requests.service';
 
 export interface IEmployeeItemDialog {
-	title: string;
+	employee: any;
 }
 
 @Component({
-  selector: 'app-employee-item-dialog',
-  templateUrl: './employee-item-dialog.component.html',
-  styleUrls: ['./employee-item-dialog.component.css']
+	selector: 'app-employee-item-dialog',
+	templateUrl: './employee-item-dialog.component.html',
+	styleUrls: ['./employee-item-dialog.component.css']
 })
 export class EmployeeItemDialogComponent extends DialogComponent<IEmployeeItemDialog, boolean> implements IEmployeeItemDialog {
-  title: string;
+	employee: any;
+	projects: object[];
 
-  constructor(dialogService: DialogService) {
-    super(dialogService);
-   }
+	constructor(dialogService: DialogService,
+	private apiRequestsService: ApiRequestsService) {
+		super(dialogService);
+	}
 
-  ngOnInit() {
-  }
+	ngOnInit() {
+	}
 
-  save() {
-    console.log('Save clicked');
-    // this.result = null;
-    this.close();
+	attach() {
+		console.log('Attach clicked');
+		this.projects = this.apiRequestsService.getProjects();
+	}
+
+	attachProject(project) {
+		console.log('attachProject()', project, this.employee)
 	}
 
 }

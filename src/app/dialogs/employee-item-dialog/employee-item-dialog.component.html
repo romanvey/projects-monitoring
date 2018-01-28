@@ -3,14 +3,36 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" (click)="close()">&times;</button>
-				<h4 class="modal-title">{{ title }}</h4>
+				<h4 class="modal-title"> Employee info </h4>
 			</div>
 			<div class="modal-body scroll-styling">
-				cool
+				<div class="category">
+					<div class="category-name">Name: </div>&nbsp;&nbsp;&nbsp;&nbsp; {{ employee.public.name }}
+				</div>
+				<div class="category">
+					<div class="category-name">Email: </div>&nbsp;&nbsp;&nbsp;&nbsp; {{ employee.public.email }}
+				</div>
+				<div class="category">
+					<div class="category-name">Project: </div>&nbsp;&nbsp;&nbsp;&nbsp; {{ employee.public.project }}
+				</div>
+				<div class="category">
+					<div class="category-name">Position: </div>&nbsp;&nbsp;&nbsp;&nbsp; {{ employee.public.position }}
+				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="typical-btn cancel-btn" (click)="close()">Cancel</button>
-				<button type="button" class="typical-btn save-btn" (click)="save()">Save</button>
+
+
+				<div class="dropdown dropup">
+					<button type="button" class="typical-btn save-btn"  id="dropdownMenuButton" (click)="attach()"
+					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Attach</button>
+					<div *ngIf="projects" class="dropdown-menu scroll-styling" aria-labelledby="dropdownMenuButton">
+							<p *ngFor="let project of projects" class="dropdown-item"
+							(click)="attachProject(project)">{{ project.public.project }}</p>
+					</div>
+				</div>
+
+
 			</div>
 		</div>
 	</div>

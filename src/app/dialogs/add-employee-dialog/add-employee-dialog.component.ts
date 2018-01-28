@@ -60,6 +60,7 @@ export class AddEmployeeDialogComponent extends DialogComponent<IAddEmployeeDial
 			hireDate: this.hireDate
 		});
 	}
+	
 	save(newEmployee) {
 		console.log('Add employee');
 		const response = this.apiRequestsService.addEmployee(newEmployee);

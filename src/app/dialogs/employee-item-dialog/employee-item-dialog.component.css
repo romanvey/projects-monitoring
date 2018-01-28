@@ -1,76 +1,35 @@
-input:focus,
-output:focus,
-select:focus,
-textarea:focus,
-button:focus {
-    outline: none !important;
-    box-shadow: none !important;
-}
-
-input {
-    background-color: #f7f7f7;
-    color: rgba(0, 0, 0, 0.7);
-    padding: 15px 15px 15px;
-    border-radius: 2px;
-    height: 50px;
-    margin-top: 5px;
-    box-shadow: none;
-    width: 100%;
-    border: none;
-}
-input:focus {
-    background-color: rgba(0, 118, 255, 0.05);
-}
-input:hover{
-    background-color: rgba(0, 118, 255, 0.1);
-}
-
-
-
-select {
-    background-color: #f7f7f7;
-    color: rgba(0, 0, 0, 0.7);
-    padding: 15px 15px 15px;
-    border-radius: 2px;
-    height: 50px;
-    margin-top: 5px;
-    box-shadow: none;
-    width: 100%;
-    border: none;
-}
-select:focus {
-    background-color: rgba(0, 118, 255, 0.05);
-}
-
-
-
-
-option {
-    border-radius: 2px;
-}
-option:not(:checked) { 
-    background-color: #f7f7f7;
-    color: rgba(0, 0, 0, 0.7);
-}
-option:checked {
-    background-color: #f7f7f7;
-    color: rgba(0, 0, 0, 0.7);
-}
-option:hover {
-    background-color: black !important;
-}
-
-
-
 .modal-footer{
     display: flex;
     justify-content: space-between;
 }
 
+.dropdown {
+    margin-right: -210px;
+}
+
+.dropdown-menu {
+    max-height: 500px;
+    overflow-y: scroll;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.dropdown-item {
+    padding-left: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+    margin: 0;
+}
+
+.dropdown-item:hover {
+    background-color: #f0f7ff;
+}
+
 .save-btn{
     width: 80px;
     height: 40px;
-    margin-right: -210px;
 }
 
 .save-btn:disabled{
@@ -125,4 +84,15 @@ option:hover {
 {
 	border-radius: 10px;
 	background-color: #cccccc;
+}
+
+
+.category {
+    display: flex;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+.category-name {
+    font-size: 20px;
+    font-weight: bold;
 }
